@@ -26,3 +26,17 @@ This would switch off all output for the given module. You can switch off a whol
 
 The intention is to have only a single module's specification in each file, hence the `module` line doesn't specify a name.
 
+You would then use these `module_config` data structures to create the output variables.
+
+```fortran
+var_config = biogeophys_config%get_variable("sensible_heat_flux")
+do i = 1, size(var_config%agg_methods)
+  cable_create_output_var(
+    "Qh",
+    ...,
+    method = var_config%agg_methods(i)
+    ...
+    )
+end do
+```
+
