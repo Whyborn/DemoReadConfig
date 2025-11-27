@@ -75,7 +75,7 @@ contains
     ! Assume it's on, unless it's specified off
     this%active = index(output_def, "off") == 0
 
-    sep_loc = index(output_def, ">")
+    sep_loc = index(output_def, "|")
     this%agg_methods = split(output_def(sep_loc+1:), ",")
 
     call this%apply_to_all()
@@ -91,7 +91,7 @@ contains
     type(group_config) :: current_group
     character(len=50), dimension(2) :: split_def
 
-    sep_loc = index(output_def, ">")
+    sep_loc = index(output_def, "|")
 
     split_def = split(output_def(:sep_loc-1), ":")
     group_name = trim(split_def(2))
@@ -113,7 +113,7 @@ contains
     type(variable_config) :: current_var
     character(len=50), dimension(2) :: split_def
 
-    sep_loc = index(output_def, ">")
+    sep_loc = index(output_def, "|")
 
     split_def = split(output_def(:sep_loc-1), ":")
     var_name = trim(split_def(2))
